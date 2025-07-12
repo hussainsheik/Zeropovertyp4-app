@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bangaru Kutumbams Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .kpi { background: #f0f0f0; padding: 15px; border-radius: 5px; margin: 10px; }
+        .chart-container { width: 100%; max-width: 800px; margin: 20px auto; }
+        .row { display: flex; flex-wrap: wrap; }
+        .col { flex: 50%; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Bangaru Kutumbams Dashboard</h1>
+    
+    <div class="row">
+        <div class="kpi col">
+            <h3>Total Bangaru Kutumbams</h3>
+            <h2>64,940</h2>
+        </div>
+        <div class="kpi col">
+            <h3>Total Families Covered</h3>
+            <h2>170,803</h2>
+        </div>
+        <div class="kpi col">
+            <h3>Total Adopted</h3>
+            <h2>6,502</h2>
+        </div>
+        <div class="kpi col">
+            <h3>Yet To Adopt</h3>
+            <h2>58,438</h2>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="adoptionChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="margadarsisChart"></canvas>
+    </div>
+
+    <script>
+        // Adoption Status Chart
+        const ctx1 = document.getElementById('adoptionChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Achanta', 'Bhimavaram', 'Narasapuram', 'Palacole', 'Tadepalligudem', 'Tanuku', 'Undi', 'Ungutur'],
+                datasets: [
+                    {
+                        label: 'Adopted',
+                        data: [129, 707, 4, 90, 2482, 512, 42, 2536],
+                        backgroundColor: 'rgba(75, 192, 192, 0.6)'
+                    },
+                    {
+                        label: 'Yet to Adopt',
+                        data: [6942, 12063, 8192, 7605, 7012, 6885, 9739, 0],
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { stacked: true },
+                    y: { stacked: true }
+                }
+            }
+        });
+
+        // Margadarsis Chart
+        const ctx2 = document.getElementById('margadarsisChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Achanta', 'Bhimavaram', 'Narasapuram', 'Palacole', 'Tadepalligudem', 'Tanuku', 'Undi', 'Ungutur'],
+                datasets: [{
+                    label: 'Margadarsis Mobilized',
+                    data: [83, 8, 4, 13, 111, 38, 31, 4],
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)'
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
